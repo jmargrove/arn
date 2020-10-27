@@ -6,19 +6,16 @@ init <- function() {
     dir.create(pkg_dir)
   }
 
-  pkg_file <- paste0(getwd(), 'packages.R')
-  if (!file.exists(pkg_file)) {
-    file.create(pkg_file)
-  }
+  pkg_file <- paste0(getwd(), '/packages.yaml')
+  file.create(pkg_file)
+  
 
   # Project name is the same as before
   projectName <- basename(getwd())
-
-  content <- (list(
+  
+  # Create a yaml file for the project at the root.
+  yaml::write_yaml(file = pkg_file, list(
     "name" = projectName,
     "version" = "0.0.1"
   ))
-
-  save(file = './packages.R', content)
-
 }
