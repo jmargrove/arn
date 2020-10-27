@@ -1,3 +1,3 @@
-function(content){
-  return(content)
+function(content) {
+    return(content)
 }
