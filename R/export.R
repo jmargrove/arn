@@ -1,5 +1,5 @@
-(function(){
-  export = function(content){
+export = (function() {
+  export = function(content) {
     source('./module.R')$value(content)
   }
   return(export)

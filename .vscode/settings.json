@@ -1,0 +1,6 @@
+{
+  "r.editor.bracesOnNewLine": true,
+  "r.editor.tabSize": 2,
+  "r.linting.enable": true,
+  "r.linting.lineLength": true
+}
