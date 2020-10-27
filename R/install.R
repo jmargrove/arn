@@ -1,4 +1,5 @@
 install <- function(pkg) {
+  pkg <- "ggplot2"
   pkg_dir <- paste0(getwd(), "/r_packages")
 
   while (!dir.exists("r_packages")) {
@@ -10,12 +11,15 @@ install <- function(pkg) {
 
   install.packages(pkg, lib = pkg_dir)
 
-  pakages <- yaml::read_yaml(file = "./packages.yaml")
-  if (!package$depencies) {
-    packages$depenencies <- c(
-      list(pkg = packageVersion(pkg))
-    )
+  packages <- yaml::read_yaml(file = "./packages.yaml")
+
+  if (!is.null(packages$depencies)) {
+    dep <- list()
+    dep[[pkg]] <- toString(packageVersion(pkg, lib.loc = pkg_dir))
+    packages$depenencies <- c(dep, dep)
   } else {
     append(packages$depenencies, list(pkg = packageVersion(pkg)))
   }
+
+  yaml::write_yaml(file = "./packages.yaml", packages)
 }
