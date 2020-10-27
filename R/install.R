@@ -13,12 +13,13 @@ install <- function(pkg) {
 
   packages <- yaml::read_yaml(file = "./packages.yaml")
 
+  dep <- list()
+  dep[[pkg]] <- toString(packageVersion(pkg, lib.loc = pkg_dir))
+
   if (!is.null(packages$depencies)) {
-    dep <- list()
-    dep[[pkg]] <- toString(packageVersion(pkg, lib.loc = pkg_dir))
-    packages$depenencies <- c(dep, dep)
+    packages$depenencies <- c(dep)
   } else {
-    append(packages$depenencies, list(pkg = packageVersion(pkg)))
+    append(packages$depenencies, dep)
   }
 
   yaml::write_yaml(file = "./packages.yaml", packages)
