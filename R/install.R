@@ -1,7 +1,5 @@
 install <- function(pkg = NULL) {
-  # 
   
-  pkg <- "ggplot2"
   pkg_dir <- paste0(getwd(), "/r_packages")
 
   while (!dir.exists("r_packages")) {
