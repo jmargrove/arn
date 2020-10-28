@@ -1,7 +1,6 @@
 export <- (function() {
-    export = function(content) {
-        source('./module.R')$value(content)
-    }
-    return(export)
+  export_inner <- function(content) {
+    source("./module.R")$value(content)
+  }
+  return(export_inner)
 })()
-
